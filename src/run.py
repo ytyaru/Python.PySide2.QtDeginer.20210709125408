@@ -5,12 +5,12 @@ import os.path
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtUiTools import QUiLoader
  
-CURRENT_PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
- 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = QUiLoader().load(os.path.join(CURRENT_PATH, 'talker.ui'))
+        HERE = os.path.dirname(os.path.abspath(__file__))
+        UI = os.path.join(HERE, 'talker.ui')
+        self.ui = QUiLoader().load(UI)
         self.setCentralWidget(self.ui)
         self.ui.lineEdit.returnPressed.connect(self.returnPressed)
         
